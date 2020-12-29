@@ -1,0 +1,50 @@
+.search-panel{
+    margin-bottom: 50px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.search-panel input, button{
+    display: block;
+    font-size: 20px;
+}
+
+.search-panel input{
+    width: 70%;
+    outline: none;
+    padding-left: 10px;
+}
+
+.search-panel .btn-all {
+    width: 10%;
+    outline: none;
+    background-color: aqua;
+    color: white;
+    border: none;
+    transition: .3s all;
+}
+
+.search-panel .btn-all:hover{
+    width: 10%;
+    background-color: inherit;
+    color: aqua;
+    border: 2px solid aqua;
+}
+
+.search-panel .btn-liked {
+    width: 20%;
+    outline: none;
+    background-color: rgb(102, 102, 102);
+    color: white;
+    border: none;
+    transition: .3s all;
+}
+
+.search-panel .btn-liked:hover {
+    width: 20%;
+    background-color: inherit;
+    color: rgb(102, 102, 102);
+    border: 2px solid rgb(102, 102, 102);
+   
+}

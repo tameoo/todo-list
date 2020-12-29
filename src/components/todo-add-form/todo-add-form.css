@@ -1,0 +1,35 @@
+.todo-add-form{
+    height: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.todo-add-form input, button{
+    font-size: 20px;
+}
+
+.todo-add-form input{
+    width: 80%;
+    outline: none;
+    padding-left: 10px;
+}
+
+.todo-add-form button{
+    width: 20%;
+}
+
+.todo-add-form .btn-add {
+    width: 20%;
+    outline: none;
+    background-color: rgb(102, 102, 102);
+    color: white;
+    border: none;
+    transition: .3s all;
+}
+
+.todo-add-form .btn-add:hover {
+    width: 20%;
+    background-color: inherit;
+    color: rgb(102, 102, 102);
+    border: 2px solid rgb(102, 102, 102);
+}

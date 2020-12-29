@@ -1,0 +1,24 @@
+.app-header{
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.app-header h1{
+    color: rgb(102, 102, 102);
+    margin-bottom: 0;
+}
+
+.app-header .app-status{
+    font-size: 20px;
+    color: rgb(102, 102, 102);
+}
+
+.app-header .app-liked{
+    color: rgb(243, 70, 70);
+}
+
+.app-header .app-done{
+    color: rgb(0, 187, 40);
+}

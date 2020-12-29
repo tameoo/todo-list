@@ -1,0 +1,43 @@
+.todo-list-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+}
+
+.todo-list-item .todo-span{
+    cursor: pointer;
+}
+
+.todo-list-item .important{
+    color:aqua;
+    font-weight: 600;
+}
+
+.todo-list-item .done{
+    text-decoration: line-through;
+}
+
+.todo-list-item .todo-icon{
+    width: 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 17px;
+}
+
+.todo-list-item .todo-icon .fas{
+    display: block; 
+    cursor: pointer;
+}
+
+
+.todo-list-item .todo-icon .fa-star{
+    color: yellow;
+}
+.todo-list-item .todo-icon .fa-trash-alt{
+    color: gray;
+}
+.todo-list-item .todo-icon .fa-heart{
+    color: red;
+}
