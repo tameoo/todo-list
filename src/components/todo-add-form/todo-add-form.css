@@ -12,6 +12,7 @@
     width: 80%;
     outline: none;
     padding-left: 10px;
+    margin-right: 4px;
 }
 
 .todo-add-form button{
