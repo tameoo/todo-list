@@ -9,4 +9,10 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-bottom: 8px;
+    border: 1px solid grey;
+}
+
+.todo-list .liked-border{
+    border: 1px solid red;
 }

@@ -3,6 +3,7 @@
     height: 40px;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .search-panel input, button{
@@ -17,36 +18,6 @@
     margin-right: 4px;
 }
 
-.search-panel .btn-all {
-    width: 10%;
-    outline: none;
-    background-color: khaki;
-    color: white;
-    border: none;
-    transition: .3s all;
-    margin-right: 5px;
-}
-
-.search-panel .btn-all:hover{
-    width: 10%;
-    background-color: inherit;
-    color: khaki;
-    border: 2px solid khaki;
-}
-
-.search-panel .btn-liked {
-    width: 20%;
-    outline: none;
-    background-color: rgb(102, 102, 102);
-    color: white;
-    border: none;
-    transition: .3s all;
-}
-
-.search-panel .btn-liked:hover {
-    width: 20%;
-    background-color: inherit;
-    color: rgb(102, 102, 102);
-    border: 2px solid rgb(102, 102, 102);
-   
+.search-panel .btn{
+    margin-left: 3px;
 }

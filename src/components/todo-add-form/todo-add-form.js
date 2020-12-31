@@ -15,7 +15,12 @@ export default class AddTodo extends Component{
 
     onSubmit = (e) => {
         e.preventDefault();
-        this.props.onAdd(this.state.text);
+        if(this.state.text.length > 1){
+            this.props.onAdd(this.state.text);
+            this.setState({
+                text: ' '
+            });
+        }
         e.target.reset();
     }
 
@@ -24,7 +29,7 @@ export default class AddTodo extends Component{
         return (
             <form className="todo-add-form" onSubmit={this.onSubmit}>
                 <input type="text" placeholder="Type here your todo" className="form-control" onChange={this.onLabelChange} />
-                <button className=" btn btn-add">Add</button>
+                <button className=" btn btn-secondary">Add</button>
             </form>
         );
     }

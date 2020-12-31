@@ -2,6 +2,7 @@
     height: 40px;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .todo-add-form input, button{
@@ -19,18 +20,3 @@
     width: 20%;
 }
 
-.todo-add-form .btn-add {
-    width: 20%;
-    outline: none;
-    background-color: rgb(102, 102, 102);
-    color: white;
-    border: none;
-    transition: .3s all;
-}
-
-.todo-add-form .btn-add:hover {
-    width: 20%;
-    background-color: inherit;
-    color: rgb(102, 102, 102);
-    border: 2px solid rgb(102, 102, 102);
-}

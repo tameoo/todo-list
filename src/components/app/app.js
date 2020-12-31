@@ -8,17 +8,25 @@ import './app.css';
 
 export default class App extends Component{
     
-    maxId = 10;
-
+    
     state = {
         todoData: [
             {label: "Drink Coffee More", imortant: false, liked: false, id: 1 },
             {label: "Be lazy", imortant: false, liked: false, id: 2 },
             {label: "Hard Work More", imortant: false, liked: false, id: 3 }
-        ]
+        ],
+        term: '',
+        filter: 'all',
+        idForBorder: []
     };
-   
-   deleteItem = (id) => {
+    
+    maxId = 10;
+    likedArray = [];
+
+    allArray = this.state.todoData;
+
+
+    deleteItem = (id) => {
        this.setState(({todoData}) => {
             const index = todoData.findIndex((el) => el.id === id);
 
@@ -47,14 +55,14 @@ export default class App extends Component{
             };
         });
     };
-
+    
     onToggleProperty(arr,id, property){
-            const index = arr.findIndex((el) => el.id === id);
+        const index = arr.findIndex((el) => el.id === id);
+        
+        const oldItem = arr[index];
+        const newItem = { ...oldItem, [property]: !oldItem[property]}  
 
-            const oldItem = arr[index];
-            const newItem = { ...oldItem, [property]: !oldItem[property]}  
-
-            return [...arr.slice(0, index), newItem, ...arr.slice(index + 1)];
+        return [...arr.slice(0, index), newItem, ...arr.slice(index + 1)];
     }
 
     onToggleDone = (id) => {
@@ -74,53 +82,96 @@ export default class App extends Component{
     }
     
     onToggleLiked = (id) => {
-        this.setState(({ todoData }) => {
+        this.setState(({ todoData}) => {
             return{
                 todoData: this.onToggleProperty(todoData, id, "liked")
             }
         });
     }
 
-    // filterData(arr, filter){
 
-    //     switch(filter) {
-    //         case "all":
-    //             return arr
-    //         case "liked":
-    //             return arr.filter(el => el.liked);
-    //         default:
-    //             return arr
-    //     }
-        
-    // }
-    
+    filterItem(arr, property){
+        switch(property){
+            case 'all':
+                return arr;
+            case 'done':
+                return arr.filter(el => el.done);
+            case 'active':
+                return arr.filter(el => !el.done);
+            case 'liked':
+                return arr.filter(el => el.liked);
+            default:
+                return arr;
+        }
+    }
+
     allItem = () => {
-        // this.setState({
-        //     todoData: this.filterData(this.todoData,"all")
-        // });
+        this.setState(({filter}) => {
+            return{
+                filter: 'all'
+            }
+        });
     }
     
     likedItem = () => {
-        // this.setState({
-        //     todoData: this.filterData(this.todoData,"liked")
-        // });
+        this.setState(({filter}) => {
+            return{
+                filter: 'liked'
+            }
+        });
+    }
 
+    doneItem = () => {
+        this.setState(({filter}) => {
+            return{
+                filter: 'done'
+            }
+        });
+    }
+
+    activeItem = () => {
+        this.setState(({filter}) => {
+            return{
+                filter: 'active'
+            }
+        });
+    }
+
+
+    search(arr, term){
+
+        if(term.length === 0){
+            return arr;
+        }
+        
+        return arr.filter((item) => {
+            return item.label.toLowerCase().indexOf(term.toLowerCase()) > -1;
+        });        
+    }
+
+    onSearchItem = (term) => {
+        this.setState({
+            term: term
+        });
     }
 
     render(){
-        const { todoData } = this.state;
+        const { todoData, term, filter } = this.state;
+        
+        const visible = this.filterItem(this.search(todoData, term), filter);
 
         const done = todoData.filter(el => el.done).length;
         const todo = todoData.length - done;
         const liked = todoData.filter(el => el.liked).length;
         
+
         return (
 
             <div className="app">
                     <div className="app-inner">
                     <Header toDo={todo} Done={done} Liked={liked} />
-                    <SearchPanel onClickAll={this.allItem} onClickLiked={this.likedItem}/>
-                    <TodoList todo={todoData} onDeleted={this.deleteItem} onToggleDone={this.onToggleDone} onToggleImportant={this.onToggleImportant} onToggleLiked={this.onToggleLiked}/>  
+                    <SearchPanel onClickAll={this.allItem} onClickLiked={this.likedItem} onClickDone={this.doneItem} onClickActive={this.activeItem} onSearchItem={this.onSearchItem}/>
+                    <TodoList todo={visible} onDeleted={this.deleteItem} onToggleDone={this.onToggleDone} onToggleImportant={this.onToggleImportant} onToggleLiked={this.onToggleLiked}/>  
                     <AddTodo onAdd={this.addItem} />
                 </div>
             </div>
